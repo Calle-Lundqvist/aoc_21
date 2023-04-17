@@ -38,3 +38,18 @@ std::vector<int> read_line_ints_from_file(std::string day, bool real)
 
 	return vec;
 }
+
+std::vector<std::string> split_string_by_delim(std::string str, char delim)
+{
+	// Splits a string into words, separated by char delim
+
+	std::istringstream iss(str);
+	std::vector<std::string> words;
+
+	while (std::getline(iss, str, delim)) 
+	{
+		words.push_back(str);
+	}
+
+	return words;
+}
