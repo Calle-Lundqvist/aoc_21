@@ -1,5 +1,6 @@
 #include "day_1.h"
 #include "day_2.h"
+#include "day_3.h"
 
 
 int main()
@@ -10,5 +11,7 @@ int main()
     int ans_b = day_1_solver_b("1", true);
     std::cout << ans_b << '\n';*/
 
-    day_2_solver();
+    // day_2_solver();
+
+    day_3_solver();
 }
