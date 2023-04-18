@@ -13,4 +13,6 @@ std::vector<std::vector<int>> read_2dVec_ints_from_file(std::string day, bool re
 
 std::vector<std::string> split_string_by_delim(std::string str, char delim);
 
+std::vector<int> split_string_by_delim_return_int(std::string str, char delim);
+
 int64_t binaryToDecimal(std::string s);

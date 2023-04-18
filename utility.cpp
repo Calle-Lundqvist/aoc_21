@@ -102,6 +102,26 @@ std::vector<std::string> split_string_by_delim(std::string str, char delim)
 	return words;
 }
 
+std::vector<int> split_string_by_delim_return_int(std::string str, char delim)
+{
+	// Splits a string into ints, separated by char delim
+
+	std::stringstream iss(str);
+	int num;
+	std::vector<int> ints{};
+
+	while (iss >> num)
+	{
+		ints.push_back(num);
+	}
+
+
+	return ints;
+}
+
+
+
+
 
 
 int64_t binaryToDecimal(std::string s)
