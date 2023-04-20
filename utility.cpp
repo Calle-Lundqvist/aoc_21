@@ -87,6 +87,7 @@ std::vector<std::vector<int>> read_2dVec_ints_from_file(std::string day, bool re
 	return vec2d;
 }
 
+
 std::vector<std::string> split_string_by_delim(std::string str, char delim)
 {
 	// Splits a string into words, separated by char delim
@@ -102,7 +103,26 @@ std::vector<std::string> split_string_by_delim(std::string str, char delim)
 	return words;
 }
 
+
 std::vector<int> split_string_by_delim_return_int(std::string str, char delim)
+{
+
+	// Splits a string into ints, separated by char delim
+
+	// Splits a string into words, separated by char delim
+
+	std::istringstream iss(str);
+	std::vector<int> ints{};
+
+	while (std::getline(iss, str, delim))
+	{
+		ints.push_back(std::stoi(str));
+	}
+
+	return ints;
+}
+
+std::vector<int> split_string_by_space_return_int(std::string str)
 {
 	// Splits a string into ints, separated by char delim
 
