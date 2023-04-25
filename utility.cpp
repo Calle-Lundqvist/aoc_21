@@ -48,6 +48,36 @@ std::vector<int> read_line_ints_from_file(std::string day, bool real)
 	return vec;
 }
 
+std::vector<std::string> read_all_strings_from_file(std::string day, bool real)
+{
+	// Simply returns an array where each line is a line from the text document
+	std::string file_path{ get_file_path(day, real) };
+
+
+
+	std::vector<std::string> vec2d{};
+
+
+	std::fstream newfile;
+	newfile.open(file_path, std::ios::in); // open file for reading
+
+	if (!newfile) std::cerr << "Could not open the file!" << std::endl;
+
+	if (newfile.is_open())
+	{
+		std::string line{};
+		while (std::getline(newfile, line))
+		{
+			vec2d.push_back(line);
+
+		}
+		newfile.close();
+	}
+
+
+	return vec2d;
+}
+
 std::vector<std::vector<int>> read_2dVec_ints_from_file(std::string day, bool real)
 {
 	// If file is a text file with integers on each row, where we want to access vec[i][j], use this one
@@ -103,13 +133,32 @@ std::vector<std::string> split_string_by_delim(std::string str, char delim)
 	return words;
 }
 
+std::vector<std::string> split_string_by_delim(std::string str, std::string delim)
+{
+	size_t pos_start = 0, pos_end, delim_len = delim.length();
+
+	std::string token;
+	std::vector<std::string> words;
+	while ((pos_end = str.find(delim, pos_start)) != std::string::npos)
+	{
+		token = str.substr(pos_start, pos_end - pos_start);
+		pos_start = pos_end + delim_len;
+		words.push_back(token);
+	}
+
+	words.push_back(str.substr(pos_start));
+
+
+	return words;
+}
+
 
 std::vector<int> split_string_by_delim_return_int(std::string str, char delim)
 {
 
 	// Splits a string into ints, separated by char delim
 
-	// Splits a string into words, separated by char delim
+
 
 	std::istringstream iss(str);
 	std::vector<int> ints{};
@@ -168,4 +217,11 @@ int64_t binaryToDecimal(std::string s)
 	}
 
 	return dec_value;
+}
+
+
+bool check_if_diagonal(int x1, int y1, int x2, int y2)
+{
+	// Checks if two points are diagonal
+	return (abs(x1 - x2) == (abs(y1 - y2)));
 }
